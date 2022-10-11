@@ -41,7 +41,7 @@ const Main: React.FC<Props> = ({}) => {
   const { settings } = useSettingsContext();
 
   return (
-    <Grid container sx={{ width: "100%", height: "100%" }}>
+    <Grid container>
       <Grid item xs={false} sm={false} />
       <Grid item xs={12} sm={12}>
         {distro ? (

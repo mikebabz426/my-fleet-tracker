@@ -6,7 +6,6 @@ import {
   TableRow,
   MenuItem,
   Select,
-  InputBase,
   FormControl,
   Checkbox,
   Snackbar,
@@ -213,7 +212,11 @@ const TruckRow = (props) => {
                 {values.edit === false ? (
                   <Typography>{values.day}</Typography>
                 ) : (
-                  <FormControl variant="outlined">
+                  <FormControl
+                    variant="outlined"
+                    size="small"
+                    sx={(theme) => ({ margin: theme.spacing(1), minWidth: 80 })}
+                  >
                     <Field as={Select} name="day" variant="outlined">
                       {weekDays.map((day) => (
                         <MenuItem value={day} key={day}>
@@ -253,6 +256,7 @@ const TruckRow = (props) => {
                     size="small"
                     color="secondary"
                     variant="outlined"
+                    as={TextField}
                   />
                 )}
               </StyledTableCell>
@@ -260,7 +264,11 @@ const TruckRow = (props) => {
                 {values.edit === false ? (
                   <Typography>{values.usState}</Typography>
                 ) : (
-                  <FormControl variant="outlined">
+                  <FormControl
+                    variant="outlined"
+                    size="small"
+                    sx={(theme) => ({ margin: theme.spacing(1), minWidth: 80 })}
+                  >
                     <Field as={Select} name="usState" variant="outlined">
                       {states.map((st) => (
                         <MenuItem value={st} key={st}>
@@ -280,6 +288,7 @@ const TruckRow = (props) => {
                     type="input"
                     size="small"
                     color="secondary"
+                    as={TextField}
                   />
                 )}
               </StyledTableCell>
@@ -303,7 +312,11 @@ const TruckRow = (props) => {
                 {values.edit === false ? (
                   <Typography>{values.status}</Typography>
                 ) : (
-                  <FormControl variant="outlined">
+                  <FormControl
+                    variant="outlined"
+                    size="small"
+                    sx={(theme) => ({ margin: theme.spacing(1), minWidth: 80 })}
+                  >
                     <Field as={Select} name="status" variant="outlined">
                       {truckStatus.map((st) => (
                         <MenuItem value={st} key={st}>
@@ -320,7 +333,6 @@ const TruckRow = (props) => {
                 ) : (
                   <Field
                     name="needs"
-                    label="Needs"
                     type="input"
                     variant="outlined"
                     size="small"
@@ -335,7 +347,6 @@ const TruckRow = (props) => {
                 ) : (
                   <Field
                     name="notes"
-                    label="Notes"
                     type="input"
                     variant="outlined"
                     size="small"

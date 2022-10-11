@@ -60,7 +60,7 @@ const Header: React.FC<Props> = ({
   });
 
   return (
-    <Container sx={margin ? { mb: 100 } : null}>
+    <Container sx={margin ? { mb: 10 } : null}>
       <AppBar color="primary" position="fixed">
         <Toolbar sx={{ justifyContent: "space-between", margin: "0 0" }}>
           <Link
