@@ -5,7 +5,7 @@ import { gql, useSubscription } from "@apollo/client";
 import { useDistroContext } from "../DistroContext";
 import { useSettingsContext } from "../SettingsContext";
 // import Distro from "./Distro/Distro"
-// import FleetManagement from "../components/FleetManagement/FleetManagement"
+import FleetManagement from "../components/FleetManagement/FleetManagement";
 
 interface Props {
   children?: React.ReactNode;
@@ -49,8 +49,7 @@ const Main: React.FC<Props> = ({}) => {
 
           <h1>This is the distro</h1>
         ) : settings ? (
-          // <FleetManagement loading={loading} data={data} error={error} />
-          <h1>This is the Fleet Management Area</h1>
+          <FleetManagement loading={loading} data={data} error={error} />
         ) : (
           <FleetTable loading={loading} data={data} error={error} />
         )}
