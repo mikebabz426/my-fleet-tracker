@@ -210,16 +210,25 @@ const TruckRow = (props) => {
 
               <StyledTableCell>
                 {values.edit === false ? (
-                  <Typography>{values.day}</Typography>
+                  <Typography sx={{ fontWeight: 500 }}>{values.day}</Typography>
                 ) : (
                   <FormControl
                     variant="outlined"
                     size="small"
                     sx={(theme) => ({ margin: theme.spacing(1), minWidth: 80 })}
                   >
-                    <Field as={Select} name="day" variant="outlined">
+                    <Field
+                      sx={{ fontWeight: 500 }}
+                      as={Select}
+                      name="day"
+                      variant="outlined"
+                    >
                       {weekDays.map((day) => (
-                        <MenuItem value={day} key={day}>
+                        <MenuItem
+                          sx={{ fontWeight: 500 }}
+                          value={day}
+                          key={day}
+                        >
                           {day}
                         </MenuItem>
                       ))}
@@ -244,13 +253,24 @@ const TruckRow = (props) => {
                 ) : null}
               </StyledTableCell>
               <StyledTableCell>
-                <Typography>{type}</Typography>
+                {type === "53' Van" ? (
+                  <Typography sx={{ fontWeight: 500, color: "#43a047" }}>
+                    {type}
+                  </Typography>
+                ) : (
+                  <Typography sx={{ fontWeight: 500, color: "#f44336" }}>
+                    {type}
+                  </Typography>
+                )}
               </StyledTableCell>
               <StyledTableCell>
                 {values.edit === false ? (
-                  <Typography>{values.city}</Typography>
+                  <Typography sx={{ fontWeight: 500 }}>
+                    {values.city}
+                  </Typography>
                 ) : (
                   <Field
+                    sx={{ fontWeight: 500 }}
                     name="city"
                     type="input"
                     size="small"
@@ -262,16 +282,23 @@ const TruckRow = (props) => {
               </StyledTableCell>
               <StyledTableCell>
                 {values.edit === false ? (
-                  <Typography>{values.usState}</Typography>
+                  <Typography sx={{ fontWeight: 500 }}>
+                    {values.usState}
+                  </Typography>
                 ) : (
                   <FormControl
+                    sx={{ fontWeight: 500 }}
                     variant="outlined"
                     size="small"
-                    sx={(theme) => ({ margin: theme.spacing(1), minWidth: 80 })}
                   >
-                    <Field as={Select} name="usState" variant="outlined">
+                    <Field
+                      sx={{ fontWeight: 500 }}
+                      as={Select}
+                      name="usState"
+                      variant="outlined"
+                    >
                       {states.map((st) => (
-                        <MenuItem value={st} key={st}>
+                        <MenuItem sx={{ fontWeight: 500 }} value={st} key={st}>
                           {st}
                         </MenuItem>
                       ))}
@@ -281,9 +308,12 @@ const TruckRow = (props) => {
               </StyledTableCell>
               <StyledTableCell>
                 {values.edit === false ? (
-                  <Typography>{values.time}</Typography>
+                  <Typography sx={{ fontWeight: 500 }}>
+                    {values.time}
+                  </Typography>
                 ) : (
                   <Field
+                    sx={{ fontWeight: 500 }}
                     name="time"
                     type="input"
                     size="small"
@@ -310,16 +340,24 @@ const TruckRow = (props) => {
               </StyledTableCell>
               <StyledTableCell>
                 {values.edit === false ? (
-                  <Typography>{values.status}</Typography>
+                  <Typography sx={{ fontWeight: 500 }}>
+                    {values.status}
+                  </Typography>
                 ) : (
                   <FormControl
                     variant="outlined"
                     size="small"
-                    sx={(theme) => ({ margin: theme.spacing(1), minWidth: 80 })}
+                    sx={{ fontWeight: 500 }}
                   >
-                    <Field as={Select} name="status" variant="outlined">
+                    <Field
+                      sx={{ fontWeight: 500 }}
+                      as={Select}
+                      name="status"
+                      variant="outlined"
+                      color="secondary"
+                    >
                       {truckStatus.map((st) => (
-                        <MenuItem value={st} key={st}>
+                        <MenuItem sx={{ fontWeight: 500 }} value={st} key={st}>
                           {st}
                         </MenuItem>
                       ))}
@@ -329,7 +367,9 @@ const TruckRow = (props) => {
               </StyledTableCell>
               <StyledTableCell>
                 {values.edit === false ? (
-                  <Typography>{values.needs}</Typography>
+                  <Typography sx={{ fontWeight: 500 }}>
+                    {values.needs}
+                  </Typography>
                 ) : (
                   <Field
                     name="needs"
@@ -343,7 +383,9 @@ const TruckRow = (props) => {
               </StyledTableCell>
               <StyledTableCell>
                 {values.edit === false ? (
-                  <Typography>{values.notes}</Typography>
+                  <Typography sx={{ fontWeight: 500 }}>
+                    {values.notes}
+                  </Typography>
                 ) : (
                   <Field
                     name="notes"
