@@ -1,7 +1,7 @@
 import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import PropTypes from "prop-types";
-// import Header from "./Header";
+import Header from "./Header";
 import "@fontsource/roboto";
 import GlobalThemeProvider from "../GlobalThemeProvider";
 import { useDistroContext } from "../DistroContext";
@@ -20,15 +20,15 @@ const Layout: React.FC<Props> = ({ children, margin, headerInfo }) => {
   return (
     <GlobalThemeProvider>
       <CssBaseline>
-        {/* <Header
+        <div>{children}</div>
+        <Header
           infoDisplay={headerInfo}
           margin={margin}
           setDistro={() => setDistro(!distro)}
           distro={distro}
           settings={settings}
           setSettings={() => setSettings(!settings)}
-        /> */}
-        {children}
+        />
       </CssBaseline>
     </GlobalThemeProvider>
   );
