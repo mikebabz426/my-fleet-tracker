@@ -22,6 +22,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.8",
+    "formik": "^2.2.9",
     "gatsby": "^4.24.4",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-manifest": "^4.24.0",
@@ -40,6 +41,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
-    "ws": "^8.9.0"
+    "ws": "^8.9.0",
+    "yup": "^0.32.11"
   }
 }

@@ -20,7 +20,6 @@ const Layout: React.FC<Props> = ({ children, margin, headerInfo }) => {
   return (
     <GlobalThemeProvider>
       <CssBaseline>
-        <div>{children}</div>
         <Header
           infoDisplay={headerInfo}
           margin={margin}
@@ -29,6 +28,7 @@ const Layout: React.FC<Props> = ({ children, margin, headerInfo }) => {
           settings={settings}
           setSettings={() => setSettings(!settings)}
         />
+        {children}
       </CssBaseline>
     </GlobalThemeProvider>
   );

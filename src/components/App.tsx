@@ -22,6 +22,7 @@ const App: React.FC<Props> = ({}) => {
       <Typography>Error: {error.message}</Typography>
     </Box>
   ) : null;
+  console.log(isAuthenticated);
 
   return (
     <>

@@ -41,8 +41,6 @@ const Header: React.FC<Props> = ({
   const teamOptions = ["All", "Mike", "Alex", "Bobby"];
   const dayOptions = ["All", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-  console.log(filters);
-
   const handleChange = (event, type) => {
     type === "day"
       ? setFilters({ ...filters, day: event.target.value })
