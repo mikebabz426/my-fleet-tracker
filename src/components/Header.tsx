@@ -16,6 +16,7 @@ import Filter from "./Filters/Filter";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import ViewListIcon from "@mui/icons-material/ViewList";
+import { FormControl, MenuItem, Select } from "@mui/material";
 
 interface Props {
   infoDisplay: boolean;
@@ -37,13 +38,15 @@ const Header: React.FC<Props> = ({
   const { user, isAuthenticated } = useAuth0();
   const [filters, setFilters] = useContext(FilterContext);
   const [fuelPrice, setFuelPrice] = useState(0);
-  const teamOptions = ["All", "Mike", "Alex", "Chip", "Vlad"];
+  const teamOptions = ["All", "Mike", "Alex", "Bobby"];
   const dayOptions = ["All", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-  const handleChange = (e, type) => {
+  console.log(filters);
+
+  const handleChange = (event, type) => {
     type === "day"
-      ? setFilters({ ...filters, day: e.target.value })
-      : setFilters({ ...filters, team: e.target.value });
+      ? setFilters({ ...filters, day: event.target.value })
+      : setFilters({ ...filters, team: event.target.value });
   };
 
   const getFuelPrice = async () => {
@@ -98,17 +101,62 @@ const Header: React.FC<Props> = ({
                   }}
                 >
                   <Typography>Team Filter: </Typography>
-                  <Filter
-                    label="Team"
-                    options={teamOptions}
-                    handler={(e) => handleChange(e, "team")}
-                  />
+                  <FormControl
+                    sx={{
+                      m: 1,
+                      minWidth: 120,
+                      color: "#333",
+                      borderColor: "#fff",
+                    }}
+                    size="small"
+                  >
+                    <Select
+                      sx={{
+                        fontWeight: "bold",
+                        color: "#333",
+                        backgroundColor: "#fff",
+                      }}
+                      displayEmpty
+                      inputProps={{ "aria-label": "Without label" }}
+                      onChange={(e) => handleChange(e, "team")}
+                      value={filters.team}
+                    >
+                      {teamOptions.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+
                   <Typography>Day Filter: </Typography>
-                  <Filter
-                    label="Day"
-                    options={dayOptions}
-                    handler={(e) => handleChange(e, "day")}
-                  />
+                  <FormControl
+                    sx={{
+                      m: 1,
+                      minWidth: 120,
+                      color: "#333",
+                      borderColor: "#fff",
+                    }}
+                    size="small"
+                  >
+                    <Select
+                      sx={{
+                        fontWeight: "bold",
+                        color: "#333",
+                        backgroundColor: "#fff",
+                      }}
+                      displayEmpty
+                      inputProps={{ "aria-label": "Without label" }}
+                      onChange={(e) => handleChange(e, "day")}
+                      value={filters.day}
+                    >
+                      {dayOptions.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
                 </Box>
 
                 <Box
