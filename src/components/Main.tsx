@@ -14,6 +14,8 @@ interface Props {
 const FLEET_ALL = gql`
   subscription FLEET_ALL {
     fleet_table {
+      available
+      active
       appt
       cell
       day

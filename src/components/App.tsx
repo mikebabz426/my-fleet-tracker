@@ -22,7 +22,6 @@ const App: React.FC<Props> = ({}) => {
       <Typography>Error: {error.message}</Typography>
     </Box>
   ) : null;
-  console.log(isAuthenticated);
 
   return (
     <>
@@ -35,6 +34,7 @@ const App: React.FC<Props> = ({}) => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            mt: -90,
           }}
         >
           <Typography variant="h6" sx={{ mt: 100, mb: 20 }}>

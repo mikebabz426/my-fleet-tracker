@@ -9,6 +9,7 @@ import {
 import CircularProgress from "@mui/material/CircularProgress";
 import DistroHeader from "./DistroHeader";
 import DistroRow from "./DistroRow";
+import { sortByDay } from "../../services/sortHelpers";
 
 interface Props {
   day: string;
@@ -32,6 +33,7 @@ const DistroTable: React.FC<Props> = ({ day, team, data, error, loading }) => {
       if (day === truck.day) return true;
       return false;
     })
+    .sort(sortByDay)
     .map((truck) => {
       return <DistroRow key={truck.id} {...truck} />;
     });
