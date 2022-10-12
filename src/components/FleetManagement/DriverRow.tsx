@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
 import {
-  TableCell,
   TableRow,
   Typography,
   TextField,
@@ -24,47 +23,22 @@ import DeleteButton from "../Buttons/DeleteButton";
 import { Formik, Field } from "formik";
 import { useMutation, gql } from "@apollo/client";
 import { styled } from "@mui/material/styles";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 
-const CustomInput = styled(InputBase)(({ theme }) => ({
-  input: {
-    borderRadius: 4,
-    position: "relative",
-    backgroundColor: theme.palette.background.paper,
-    border: "1px solid #ced4da",
-    fontSize: 16,
-    padding: "10px 26px 10px 12px",
-    transition: theme.transitions.create(["border-color", "box-shadow"]),
-
-    "&:focus": {
-      borderRadius: 4,
-      borderColor: theme.palette.secondary,
-      boxShadow: `0 0 0 0.2rem rgba(102,187,106,.75)`,
-    },
-  },
-}));
-const CustomField = styled(TextField)(({ theme }) => ({
-  root: {
-    minWidth: 40,
-    maxWidth: 160,
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "#66bb6a",
-    },
-  },
-}));
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  head: {
-    backgroundColor: "#0257a2",
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: "#0257A2",
     color: theme.palette.common.white,
   },
-  body: {
+  [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
+    padding: ".5rem 1rem .5rem 1rem",
   },
 }));
+
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: "#EBF5FF",
-    },
+  "&:nth-of-type(odd)": {
+    backgroundColor: "#EBF5FF",
   },
 }));
 
@@ -226,7 +200,7 @@ const DriverRow = (props) => {
                     size="small"
                     color="secondary"
                     variant="outlined"
-                    as={CustomField}
+                    as={TextField}
                   />
                 )}
               </StyledTableCell>
@@ -240,7 +214,7 @@ const DriverRow = (props) => {
                     size="small"
                     color="secondary"
                     variant="outlined"
-                    as={CustomField}
+                    as={TextField}
                   />
                 )}
               </StyledTableCell>
@@ -254,7 +228,7 @@ const DriverRow = (props) => {
                     size="small"
                     color="secondary"
                     variant="outlined"
-                    as={CustomField}
+                    as={TextField}
                   />
                 )}
               </StyledTableCell>
@@ -268,7 +242,7 @@ const DriverRow = (props) => {
                     size="small"
                     color="secondary"
                     variant="outlined"
-                    as={CustomField}
+                    as={TextField}
                   />
                 )}
               </StyledTableCell>
@@ -282,7 +256,7 @@ const DriverRow = (props) => {
                       as={Select}
                       name="type"
                       variant="outlined"
-                      input={<CustomInput />}
+                      size="small"
                     >
                       <MenuItem value="53' Van">53' Van</MenuItem>
                       <MenuItem value="53' Reefer">53' Reefer</MenuItem>
@@ -299,11 +273,11 @@ const DriverRow = (props) => {
                       as={Select}
                       name="team"
                       variant="outlined"
-                      input={<CustomInput />}
+                      size="small"
                     >
                       <MenuItem value="Alex">Alex</MenuItem>
                       <MenuItem value="Mike">Mike</MenuItem>
-                      <MenuItem value="Chip">Chip</MenuItem>
+                      <MenuItem value="Bobby">Bobby</MenuItem>
                     </Field>
                   </FormControl>
                 )}

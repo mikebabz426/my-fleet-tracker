@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   Box,
+  InputLabel,
   Container,
   Typography,
   TextField,
@@ -12,11 +13,9 @@ import {
   MenuItem,
   InputBase,
   Radio,
-  Theme,
   Checkbox,
   Divider,
 } from "@mui/material";
-
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { Formik, Form, Field, useField, FieldAttributes } from "formik";
 import * as Yup from "yup";
@@ -69,7 +68,7 @@ const AddTruckForm = (props) => {
   const { toggle } = props;
 
   const [addDriver] = useMutation(ADD_DRIVER);
-  const teams = ["Mike", "Alex", "Chip", "Vlad"];
+  const teams = ["Mike", "Alex", "Bobby"];
 
   return (
     <Container
@@ -83,7 +82,7 @@ const AddTruckForm = (props) => {
         alignItems: "center",
       }}
     >
-      <Avatar>
+      <Avatar sx={{ color: "#0257A2" }}>
         <LocalShippingIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
@@ -119,7 +118,13 @@ const AddTruckForm = (props) => {
       >
         {({ errors, touched }) => {
           return (
-            <Form>
+            <Form
+              style={{
+                width: "100%", // Fix IE 11 issue.
+                marginTop: "1rem",
+                marginBottom: "3rem",
+              }}
+            >
               <Field
                 name="driverName"
                 type="input"
@@ -180,7 +185,7 @@ const AddTruckForm = (props) => {
                   Please enter a valid trailer number
                 </Typography>
               ) : null}
-              <Divider sx={{ m: 5 }} />
+              <Divider sx={{ m: 3 }} />
               <Typography variant="body1" style={{ fontWeight: 500 }}>
                 Select Trailer Type:{" "}
               </Typography>
@@ -201,7 +206,7 @@ const AddTruckForm = (props) => {
                   Please select a trailer type
                 </Typography>
               ) : null}
-              <Divider sx={{ m: 5 }} />
+              <Divider sx={{ m: 3 }} />
               <Box
                 sx={{
                   dispaly: "flex",
@@ -223,28 +228,39 @@ const AddTruckForm = (props) => {
                   Tanker
                 </Typography>
               </Box>
-              <Divider sx={{ m: 5 }} />
-              <Typography variant="body1" style={{ fontWeight: 500 }}>
-                Select Team: -
-              </Typography>
-              <FormControl variant="outlined">
-                <Field
-                  className="selected"
-                  as={Select}
-                  name="team"
-                  variant="outlined"
-                  input={<InputBase />}
+              <Divider sx={{ m: 3 }} />
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  m: "15px 0",
+                  width: 400,
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  sx={{ fontWeight: 500, p: "0px 10px" }}
                 >
-                  {teams.map((team) => (
-                    <MenuItem className="selected" value={team} key={team}>
-                      {team}
-                    </MenuItem>
-                  ))}
-                </Field>
-              </FormControl>
-              {errors.team && touched.team ? (
-                <Typography color="error">Please select a team</Typography>
-              ) : null}
+                  Select Team:
+                </Typography>
+                <FormControl
+                  variant="outlined"
+                  size="small"
+                  sx={(theme) => ({ margin: theme.spacing(1), minWidth: 80 })}
+                >
+                  <Field as={Select} name="team" variant="outlined">
+                    {teams.map((team) => (
+                      <MenuItem className="selected" value={team} key={team}>
+                        {team}
+                      </MenuItem>
+                    ))}
+                  </Field>
+                </FormControl>
+                {errors.team && touched.team ? (
+                  <Typography color="error">Please select a team</Typography>
+                ) : null}
+              </Box>
 
               <Button
                 type="submit"
@@ -261,28 +277,6 @@ const AddTruckForm = (props) => {
     </Container>
   );
 };
-
-//Custom Styling
-
-//Custom Styles
-
-// const CustomInput = withStyles((theme: Theme) => ({
-//   input: {
-//     borderRadius: 4,
-//     position: "relative",
-//     backgroundColor: theme.palette.background.paper,
-//     border: "1px solid #ced4da",
-//     fontSize: 16,
-//     padding: "10px 26px 10px 12px",
-//     transition: theme.transitions.create(["border-color", "box-shadow"]),
-
-//     "&:focus": {
-//       borderRadius: 4,
-//       borderColor: theme.palette.secondary,
-//       boxShadow: `0 0 0 0.2rem rgba(102,187,106,.75)`,
-//     },
-//   },
-// }))(InputBase);
 
 type MyRadioProps = { label: string } & FieldAttributes<{}>;
 

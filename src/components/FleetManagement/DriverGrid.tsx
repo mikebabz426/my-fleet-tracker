@@ -4,7 +4,6 @@ import {
   Container,
   Table,
   TableBody,
-  TableCell,
   TableContainer,
   TableHead,
   TableRow,
@@ -13,21 +12,16 @@ import {
 } from "@mui/material";
 import DriverRow from "./DriverRow";
 import { styled } from "@mui/material/styles";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  head: {
-    backgroundColor: "#0257a2",
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: "#0257A2",
     color: theme.palette.common.white,
   },
-  body: {
-    fontSize: 14,
-  },
-}));
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: "#EBF5FF",
-    },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 18,
+    padding: ".2rem .5rem",
   },
 }));
 
@@ -46,7 +40,7 @@ const DriverGrid = ({ loading, error, data, search }) => {
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
-          <StyledTableRow>
+          <TableRow>
             <StyledTableCell />
             <StyledTableCell>Name</StyledTableCell>
             <StyledTableCell>Phone</StyledTableCell>
@@ -57,7 +51,7 @@ const DriverGrid = ({ loading, error, data, search }) => {
             <StyledTableCell>Hazmat</StyledTableCell>
             <StyledTableCell>Tanker</StyledTableCell>
             <StyledTableCell />
-          </StyledTableRow>
+          </TableRow>
         </TableHead>
         <TableBody>
           {drivers
