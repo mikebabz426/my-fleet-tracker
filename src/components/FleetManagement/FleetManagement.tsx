@@ -6,14 +6,23 @@ import SearchIcon from "@mui/icons-material/Search";
 import DriverGrid from "./DriverGrid";
 import AddTruckForm from "../NewTruckForm/AddTruckForm";
 import { useNewTruckContext } from "../../NewTruckContext";
-import { styled } from "@mui/material/styles";
+import { styled, alpha } from "@mui/material/styles";
 
-const SearchBox = styled(Box)(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
+const CustomButton = styled(Button)(({ theme }) => ({
+  margin: theme.spacing(1),
   backgroundColor: "#fff",
   "&:hover": {
-    backgroundColor: "#fff",
+    backgroundColor: "#66bb6a",
+    color: "#fff",
+  },
+}));
+
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha("#333", 0.1),
+  "&:hover": {
+    backgroundColor: alpha("#333", 0.15),
   },
   marginLeft: 0,
   width: "100%",
@@ -22,7 +31,8 @@ const SearchBox = styled(Box)(({ theme }) => ({
     width: "auto",
   },
 }));
-const SearchIconBox = styled(Box)(({ theme }) => ({
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
   position: "absolute",
@@ -31,12 +41,21 @@ const SearchIconBox = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
 }));
-const CustomButton = styled(Button)(({ theme }) => ({
-  margin: theme.spacing(1),
-  backgroundColor: "#fff",
-  "&:hover": {
-    backgroundColor: "#66bb6a",
-    color: "#fff",
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
   },
 }));
 
@@ -90,20 +109,24 @@ const FleetManagement = (props) => {
                 visibility: newTruck ? "hidden" : "visible",
               }}
             >
-              <Typography variant="body1" align="center">
-                Search by truck number
+              <Typography
+                variant="h6"
+                align="center"
+                sx={{ fontVariant: "small-caps" }}
+              >
+                search by truck number:
               </Typography>
-              <SearchBox>
-                <SearchIconBox>
+              <Search>
+                <SearchIconWrapper>
                   <SearchIcon />
-                </SearchIconBox>
-                <InputBase
+                </SearchIconWrapper>
+                <StyledInputBase
                   placeholder="Search…"
                   value={search}
                   onChange={handleChange}
                   inputProps={{ "aria-label": "search" }}
                 />
-              </SearchBox>
+              </Search>
             </Box>
           </Box>
           <CustomButton
