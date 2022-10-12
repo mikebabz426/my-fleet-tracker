@@ -41,6 +41,7 @@ interface Props {
 
 const DistroRow: React.FC<Props> = (props) => {
   const { id, day, type, city, usState, needs, hazmat, tanker } = props;
+  console.log(type);
 
   return (
     <StyledTableRow key={id}>
@@ -58,7 +59,6 @@ const DistroRow: React.FC<Props> = (props) => {
           <Tnkr style={{ maxWidth: 18, maxHeight: 18, margin: "0px 3px" }} />
         ) : null}
       </StyledTableCell>
-
       <StyledTableCell>
         {type === "53' Van" ? (
           <Typography sx={{ fontWeight: 500, color: "#43a047" }}>

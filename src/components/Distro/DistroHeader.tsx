@@ -26,7 +26,7 @@ const StyledTableHead = styled(TableHead)(({ theme }) => ({
 }));
 
 const TableHeader = () => {
-  const headerNames = ["Day", "", "Type", "Location", "State", "Needs"];
+  const headerNames = ["Day", "", "Type", "City", "State", "Needs"];
   return (
     <StyledTableHead>
       <StyledTableRow>

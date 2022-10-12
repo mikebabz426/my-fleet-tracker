@@ -248,8 +248,14 @@ const DriverRow = (props) => {
               </StyledTableCell>
 
               <StyledTableCell>
-                {values.edit === false ? (
-                  <Typography>{values.type}</Typography>
+                {values.edit === false && values.type === "53' Van" ? (
+                  <Typography sx={{ fontWeight: 500, color: "#43a047" }}>
+                    {values.type}
+                  </Typography>
+                ) : values.edit === false && values.type === "53' Reefer" ? (
+                  <Typography sx={{ fontWeight: 500, color: "#f44336" }}>
+                    {type}
+                  </Typography>
                 ) : (
                   <FormControl variant="outlined">
                     <Field
@@ -264,6 +270,7 @@ const DriverRow = (props) => {
                   </FormControl>
                 )}
               </StyledTableCell>
+
               <StyledTableCell>
                 {values.edit === false ? (
                   <Typography>{values.team}</Typography>
