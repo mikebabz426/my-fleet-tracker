@@ -8,6 +8,9 @@ import fetch from "isomorphic-fetch";
 const httpLink = new HttpLink({
   uri: `${process.env.HASURA_GRAPHQL_URI}`,
   fetch,
+  headers: {
+    "x-hasura-admin-secret": `${process.env.HASURA_GRAPHQL_ADMIN_SECRET}`,
+  },
 });
 
 const wsLink =
@@ -17,6 +20,11 @@ const wsLink =
           url: `${process.env.HASURA_GRAPHQL_WS_URI}`,
           options: {
             reconnect: true,
+            connectionParams: {
+              headers: {
+                "x-hasura-admin-secret": `${process.env.HASURA_GRAPHQL_ADMIN_SECRET}`,
+              },
+            },
           },
         })
       )
