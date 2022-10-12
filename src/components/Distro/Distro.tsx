@@ -51,7 +51,7 @@ const Distro = (props) => {
       >
         <FormControl
           variant="outlined"
-          sx={(theme) => ({ margin: theme.spacing(1), minWidth: 80 })}
+          sx={(theme) => ({ margin: theme.spacing(2), minWidth: 120 })}
         >
           <InputLabel id="demo-simple-select-outlined-label">Day</InputLabel>
           <Select
@@ -71,7 +71,7 @@ const Distro = (props) => {
         </FormControl>
         <FormControl
           variant="outlined"
-          sx={(theme) => ({ margin: theme.spacing(1), minWidth: 80 })}
+          sx={(theme) => ({ margin: theme.spacing(2), minWidth: 120 })}
         >
           <InputLabel id="demo-simple-select-outlined-label">Team</InputLabel>
           <Select

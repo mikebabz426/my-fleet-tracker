@@ -4,7 +4,7 @@ import FleetTable from "./Table/FleetTable";
 import { gql, useSubscription } from "@apollo/client";
 import { useDistroContext } from "../DistroContext";
 import { useSettingsContext } from "../SettingsContext";
-// import Distro from "./Distro/Distro"
+import Distro from "./Distro/Distro";
 import FleetManagement from "../components/FleetManagement/FleetManagement";
 
 interface Props {
@@ -45,9 +45,7 @@ const Main: React.FC<Props> = ({}) => {
       <Grid item xs={false} sm={false} />
       <Grid item xs={12} sm={12}>
         {distro ? (
-          // <Distro loading={loading} data={data} error={error} />
-
-          <h1>This is the distro</h1>
+          <Distro loading={loading} data={data} error={error} />
         ) : settings ? (
           <FleetManagement loading={loading} data={data} error={error} />
         ) : (

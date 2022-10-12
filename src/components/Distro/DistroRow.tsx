@@ -32,7 +32,7 @@ interface Props {
   id: string;
   day: string;
   type: string;
-  location: string;
+  city: string;
   usState: string;
   needs: string;
   hazmat: boolean;
@@ -40,7 +40,7 @@ interface Props {
 }
 
 const DistroRow: React.FC<Props> = (props) => {
-  const { id, day, type, location, usState, needs, hazmat, tanker } = props;
+  const { id, day, type, city, usState, needs, hazmat, tanker } = props;
 
   return (
     <StyledTableRow key={id}>
@@ -72,7 +72,7 @@ const DistroRow: React.FC<Props> = (props) => {
       </StyledTableCell>
 
       <StyledTableCell>
-        <Typography sx={{ fontWeight: 500 }}>{location}</Typography>
+        <Typography sx={{ fontWeight: 500 }}>{city}</Typography>
       </StyledTableCell>
 
       <StyledTableCell>
