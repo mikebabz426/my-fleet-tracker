@@ -16,6 +16,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const TableHeader = () => {
   const headerNames = [
+    "Av",
     "Day",
     "Cell Phone",
     "Driver",

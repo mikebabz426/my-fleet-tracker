@@ -62,6 +62,7 @@ const UPDATE_TRUCK = gql`
     $status: String!
     $needs: String!
     $notes: String!
+    $available: Boolean!
   ) {
     update_fleet_table_by_pk(
       pk_columns: { id: $id }
@@ -74,6 +75,7 @@ const UPDATE_TRUCK = gql`
         status: $status
         needs: $needs
         notes: $notes
+        available: $available
       }
     ) {
       day
@@ -84,6 +86,7 @@ const UPDATE_TRUCK = gql`
       status
       needs
       notes
+      available
     }
   }
 `;
@@ -124,6 +127,7 @@ const TruckRow = (props) => {
     notes,
     hazmat,
     tanker,
+    available,
   } = props;
 
   return (
@@ -145,6 +149,7 @@ const TruckRow = (props) => {
           needs: needs,
           notes: notes,
           edit: false,
+          available: available,
         }}
         onSubmit={(values) => {
           updateTruck({
@@ -158,6 +163,7 @@ const TruckRow = (props) => {
               status: values.status,
               needs: values.needs,
               notes: values.notes,
+              available: values.available,
             },
           });
         }}
@@ -205,6 +211,30 @@ const TruckRow = (props) => {
                       }}
                     />
                   </IconButton>
+                )}
+              </StyledTableCell>
+              {/* set availability for distribution list */}
+              <StyledTableCell>
+                {values.edit === false ? (
+                  values.available === true ? (
+                    <CheckBox
+                      sx={{ "& .MuiSvgIcon-root": { fontSize: 12 } }}
+                      color="secondary"
+                    />
+                  ) : (
+                    <CheckBoxOutlineBlank
+                      sx={{ "& .MuiSvgIcon-root": { fontSize: 12 } }}
+                      color="secondary"
+                    />
+                  )
+                ) : (
+                  <Field
+                    color="secondary"
+                    name="available"
+                    as={Checkbox}
+                    id={id}
+                    checked={values.available}
+                  />
                 )}
               </StyledTableCell>
 
@@ -331,6 +361,7 @@ const TruckRow = (props) => {
                   )
                 ) : (
                   <Field
+                    color="secondary"
                     name="appt"
                     as={Checkbox}
                     id={id}

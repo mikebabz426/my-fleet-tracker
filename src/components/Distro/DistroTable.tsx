@@ -33,6 +33,10 @@ const DistroTable: React.FC<Props> = ({ day, team, data, error, loading }) => {
       if (day === truck.day) return true;
       return false;
     })
+    .filter((truck) => {
+      if (truck.available === true) return true;
+      return false;
+    })
     .sort(sortByDay)
     .map((truck) => {
       return <DistroRow key={truck.id} {...truck} />;

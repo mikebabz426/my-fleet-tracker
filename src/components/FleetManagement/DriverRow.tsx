@@ -298,6 +298,7 @@ const DriverRow = (props) => {
                   )
                 ) : (
                   <Field
+                    color="secondary"
                     name="hazmat"
                     as={Checkbox}
                     id={id}
@@ -314,6 +315,7 @@ const DriverRow = (props) => {
                   )
                 ) : (
                   <Field
+                    color="secondary"
                     name="tanker"
                     as={Checkbox}
                     id={id}
