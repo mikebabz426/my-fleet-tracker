@@ -187,29 +187,23 @@ const TruckRow = (props) => {
                     aria-label="Edit Driver Row"
                     component="span"
                     size="small"
+                    onClick={() => {
+                      setFieldValue("edit", true, false);
+                    }}
                   >
-                    <EditTwoTone
-                      color="primary"
-                      onClick={() => {
-                        setFieldValue("edit", true, false);
-                      }}
-                      fontSize="small"
-                    />
+                    <EditTwoTone color="primary" fontSize="small" />
                   </IconButton>
                 ) : (
                   <IconButton
                     color="primary"
                     aria-label="Update Driver Row"
                     component="span"
+                    onClick={() => {
+                      handleSubmit();
+                      setFieldValue("edit", false, false);
+                    }}
                   >
-                    <SaveRounded
-                      color="secondary"
-                      fontSize="small"
-                      onClick={() => {
-                        handleSubmit();
-                        setFieldValue("edit", false, false);
-                      }}
-                    />
+                    <SaveRounded color="secondary" fontSize="small" />
                   </IconButton>
                 )}
               </StyledTableCell>

@@ -1,23 +1,9 @@
 import React from "react";
 import { Typography, Box, Container } from "@mui/material";
-import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+import { StaticImage } from "gatsby-plugin-image";
 import LoginButton from "./Buttons/LoginButton";
 
 const Login = () => {
-  const data = useStaticQuery(graphql`
-    {
-      volvo: file(relativePath: { eq: "volvo.jpg" }) {
-        childImageSharp {
-          fluid(quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `);
-  const volvo = data.volvo.childImageSharp.fluid;
-
   return (
     <Container
       sx={{
@@ -50,14 +36,15 @@ const Login = () => {
         </Typography>
         <LoginButton />
       </Box>
-      <Box>
-        <Img
-          fluid={volvo}
-          style={{
-            height: "100vh",
-            width: "50vw",
-            borderRadius: "50% 0 0 50%",
-          }}
+      <Box sx={{ borderRadius: "50% 0 0 50%" }}>
+        <StaticImage
+          style={{ borderRadius: "50% 0 0 50%" }}
+          src="../images/volvo.jpg"
+          alt="a volvo semi truck"
+          placeholder="blurred"
+          layout="fixed"
+          height={1080}
+          width={960}
         />
       </Box>
     </Container>
